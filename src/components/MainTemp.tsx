@@ -11,7 +11,7 @@ const MainTemp: React.FC = () => {
           <span>↓18°C</span>
         </div>
       </div>
-      <h2 className='text-[30px] mt-2'>Clear and sunny</h2>
+      <h2 className='text-[30px] mt-2 mb-6'>Clear and sunny</h2>
     </>
   )
 }
