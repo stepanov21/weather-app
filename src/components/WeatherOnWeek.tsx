@@ -1,12 +1,14 @@
 import React from 'react'
 import { WiCloud } from 'react-icons/wi'
 
-const WeatherOnWeek = () => {
+const WeatherOnWeek = ({name, condition, temp}) => {
   return (
-    <div className='flex items-center flex-col min-w-fit rounded-md'>
-      <div className='text-m text-gray-500'>28 Feb</div>
-      <WiCloud className='mt-2 mb-2 text-[32px]'/>
-      <div className='text-m'>18°C</div>
+    <div className='flex items-center justify-between w-[100%] px-6 py-4 bg-main rounded-2xl border-[3px] border-white border-opacity-10 backdrop-blur-[7px] shadow-md'>
+      <div className='flex flex-col justify-between items-start'>
+        <div className='text-[24px]'>{name}</div>
+        <div className='text-[20px] mt-4'>{condition}</div>
+      </div>
+      <div className='py-2 px-3 bg-main rounded-xl border-[3px] border-white border-opacity-10 backdrop-blur-[7px]'>{temp}°C</div>
     </div>
   )
 }
