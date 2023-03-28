@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { WiDirectionDown, WiDirectionUp } from "react-icons/wi";
 import { WeatherContext } from "../App";
 
 const MainTemp: React.FC = () => {

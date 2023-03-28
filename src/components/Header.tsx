@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { Context, useContext } from "react";
 import { WeatherContext } from "../App";
+import { IMyContext } from "../@types/types";
 
-const Header: React.FC = () => {
-  const {setShowInput} : any = useContext(WeatherContext)
-
+const Header = ({refInput}) => {
+  const { setShowInput } = useContext(WeatherContext as Context<IMyContext>)
+  const toggleShow = () => {
+    
+    setShowInput((prev: boolean) => !prev)
+  }
   return (
     <header className="flex justify-between items-center mb-3">
       <div className="flex items-center">
@@ -11,7 +15,7 @@ const Header: React.FC = () => {
         <h2 className="text-[24px]">Weather</h2>
       </div>
       <svg
-        onClick={() => setShowInput((prev: boolean) => !prev)}
+        onClick={() => toggleShow()}
         width="24"
         height="24"
         viewBox="0 0 24 24"
