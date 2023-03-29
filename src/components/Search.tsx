@@ -22,7 +22,7 @@ const Search= ({refInput}) => {
   }, 1500);
 
   const onKeyEnter = (e: React.KeyboardEvent<HTMLInputElement> | undefined) => {
-    if(e?.key === '13') {
+    if(e?.key === 'Enter') {
       const value = e.currentTarget.value;
       console.log(value)
       setSearch(value)
@@ -48,7 +48,7 @@ const Search= ({refInput}) => {
       {value && (
         <svg
           onClick={() => focusClearInput()}
-          className="absolute right-6 cursor-pointer"
+          className="absolute right-9 cursor-pointer"
           width="24"
           height="24"
           viewBox="0 0 24 24"

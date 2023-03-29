@@ -2,10 +2,9 @@ import React, { Context, useContext } from "react";
 import { WeatherContext } from "../App";
 import { IMyContext } from "../@types/types";
 
-const Header = ({refInput}) => {
+const Header = () => {
   const { setShowInput } = useContext(WeatherContext as Context<IMyContext>)
   const toggleShow = () => {
-    
     setShowInput((prev: boolean) => !prev)
   }
   return (

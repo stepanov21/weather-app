@@ -18,6 +18,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [value, setValue] = useState("");
   const [showInput, setShowInput] = useState(false);
+  const [error, setError] = useState(false);
   const [recent, setRecent] = useState<TRecent[]>(local || []);
   const refInput = useRef<HTMLInputElement>(null);
 
@@ -45,6 +46,7 @@ function App() {
     setRecent([]);
     window.localStorage.clear();
     focusClearInput();
+    setError(false)
   };
 
   useEffect(() => {
@@ -54,6 +56,7 @@ function App() {
 
   useEffect(() => {
     const getWeatherData = async () => {
+      setError(false)
       try {
         const { data } = await axios.get(
           `http://api.weatherapi.com/v1/current.json?key=0620d2230b2c45d2a71193236222805&q=${
@@ -64,7 +67,7 @@ function App() {
         setWeatherData(data);
         setRecentWeather(data);
       } catch (error) {
-        alert(`Error ${error}`)
+        setError(true)
       }
     };
     getWeatherData();
@@ -92,7 +95,7 @@ function App() {
       <div className="App">
         <div className="container m-auto max-w-[327px] py-8">
           <div className="flex flex-col p-6 h-[300px] bg-main rounded-2xl border-[3px] border-white border-opacity-10 backdrop-blur-[7px] shadow-md">
-            <Header refInput={refInput}/>
+            <Header/>
             <AnimatePresence>
               {showInput && (
                 <m.div
@@ -101,6 +104,7 @@ function App() {
                   exit={{ opacity: 0, y: 0 }}
                 >
                   <Search refInput={refInput} />
+                  {error && <div>Не могу найти такой город</div>}
                 </m.div>
               )}
             </AnimatePresence>
@@ -116,7 +120,7 @@ function App() {
             </span>
           </div>
           <div className="flex flex-col gap-4 w-[100%]">
-            {recent && recent.map((item: TRecent, id) => (
+            {recent && recent?.map((item: TRecent, id) => (
               <WeatherOnWeek key={id} {...item} />
             ))}
           </div>
