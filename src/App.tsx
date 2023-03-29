@@ -11,7 +11,7 @@ import { motion as m, AnimatePresence } from "framer-motion";
 import { IMyContext, TRecent } from "./@types/types";
 
 export const WeatherContext = createContext<IMyContext | null>(null);
-const local: [] = JSON.parse(window.localStorage.getItem("recentItem") || '');
+const local: [] = JSON.parse(window.localStorage.getItem("recentItem") || '') || [];
 
 function App() {
   const [weatherData, setWeatherData] = useState("");
