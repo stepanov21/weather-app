@@ -19,7 +19,7 @@ function App() {
   const [value, setValue] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [error, setError] = useState(false);
-  const [recent, setRecent] = useState<TRecent[]>(local || []);
+  const [recent, setRecent] = useState<TRecent[]>([]);
   const refInput = useRef<HTMLInputElement>(null);
 
   const setRecentWeather = (data) => {
