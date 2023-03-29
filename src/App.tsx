@@ -11,7 +11,14 @@ import { motion as m, AnimatePresence } from "framer-motion";
 import { IMyContext, TRecent } from "./@types/types";
 
 export const WeatherContext = createContext<IMyContext | null>(null);
-const local: [] = JSON.parse(window.localStorage.getItem("recentItem") || '') || [];
+
+let local: TRecent[];
+
+if(window.localStorage.length > 0) {
+  local = JSON.parse(window.localStorage.getItem("recentItem") || '') || [];
+}
+
+console.log(local);
 
 function App() {
   const [weatherData, setWeatherData] = useState("");
@@ -19,7 +26,7 @@ function App() {
   const [value, setValue] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [error, setError] = useState(false);
-  const [recent, setRecent] = useState<TRecent[]>([]);
+  const [recent, setRecent] = useState<TRecent[]>(local || []);
   const refInput = useRef<HTMLInputElement>(null);
 
   const setRecentWeather = (data) => {
