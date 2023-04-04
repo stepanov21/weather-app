@@ -65,8 +65,8 @@ function App() {
       try {
         const { data } = await axios.get(
           `https://api.weatherapi.com/v1/current.json?key=0620d2230b2c45d2a71193236222805&q=${
-            search || "London"
-          }&aqi=no`
+              search || "London"
+            }&aqi=no`
         );
         console.log(data);
         setWeatherData(data);
