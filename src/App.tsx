@@ -64,7 +64,7 @@ function App() {
       setError(false)
       try {
         const { data } = await axios.get(
-          `http://api.weatherapi.com/v1/current.json?key=0620d2230b2c45d2a71193236222805&q=${
+          `https://api.weatherapi.com/v1/current.json?key=0620d2230b2c45d2a71193236222805&q=${
             search || "London"
           }&aqi=no`
         );
