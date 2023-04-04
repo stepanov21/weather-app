@@ -1,5 +1,4 @@
 import React from 'react'
-import { WiCloud } from 'react-icons/wi'
 
 const WeatherOnWeek = ({name, condition, temp}) => {
   return (

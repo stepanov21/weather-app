@@ -18,8 +18,6 @@ if(window.localStorage.length > 0) {
   local = JSON.parse(window.localStorage.getItem("recentItem") || '') || [];
 }
 
-console.log(local);
-
 function App() {
   const [weatherData, setWeatherData] = useState("");
   const [search, setSearch] = useState("");
